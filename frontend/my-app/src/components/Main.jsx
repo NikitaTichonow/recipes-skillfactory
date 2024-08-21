@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
-// import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import axios from "axios";
-// import Category from './Category';
 
 
 
@@ -27,7 +25,7 @@ function Main() {
         <h1>Выберите категорию:</h1>
         <div className="button">
             {categories.map((name) => (
-                <a key={name.categoryType} className="s" href={`/category/${name.categoryType}`}>{name.categoryType}</a>
+                <a key={name.category} className="s" href={`/category/${name.category}`}>{name.category}</a>
             ))}
         </div>
         </>

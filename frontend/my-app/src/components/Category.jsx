@@ -7,12 +7,12 @@ function Category() {
 
     const category = useParams().category;
     const [isLoading, setLoading] = useState(true);
-    const [dishes, setDishes] = useState();
+    const [recipe, setRecipe] = useState();
 
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/categories/${category}`).then(res => {
-            setDishes(res.data);
+        axios.get(`http://127.0.0.1:8000/api/categories/${category.id}`).then(res => {
+            setRecipe(res.data);
             setLoading(false);
         });
     }, [category]);
@@ -24,10 +24,10 @@ function Category() {
 
     return (
         <div>
-            <h1>{category}:</h1>
+            <h1>{category.id}:</h1>
             <div className='recipe'>
-                {dishes.map((name) => (
-                <p key={name.id}><a className="r" href={`/recipe/${name.id}`}>{name.name}</a></p>
+                {recipe.map((title) => (
+                <p key={title.id}><a className="r" href={`/recipe/${title.id}`}>{title.name}</a></p>
                 ))}
             </div>
         </div>
