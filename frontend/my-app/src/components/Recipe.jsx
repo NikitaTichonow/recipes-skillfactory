@@ -7,12 +7,12 @@ function Recipe() {
 
     const id = useParams().id;
     const [isLoading, setLoading] = useState(true);
-    const [recipe, setRecipe] = useState();
+    const [recipes, setRecipes] = useState();
 
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/recipes/${id}`).then(res => {
-            setRecipe(res.data);
+            setRecipes(res.data);
             setLoading(false);
         });
     }, [id]);
@@ -23,9 +23,9 @@ function Recipe() {
     }
     return (
         <>
-            <h1>{recipe.name}:</h1>
+            <h1>{recipes.title}:</h1>
             <div className='recipe'>
-                <text style={{ whiteSpace: "pre-line" }}>{recipe.recipe}</text>
+                <text style={{ whiteSpace: "pre-line" }}>{recipes.description}{recipes.category}</text>
             </div>
         </>
     );

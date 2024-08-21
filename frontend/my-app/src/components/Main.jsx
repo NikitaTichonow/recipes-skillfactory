@@ -5,11 +5,11 @@ import axios from "axios";
 
 function Main() {
     const [isLoading, setLoading] = useState(true);  // Флаг готовности результата axios
-    const [categories, setCategories] = useState();
+    const [categories, setCategory] = useState();
 
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/categories/").then(res => {
-            setCategories(res.data);
+            setCategory(res.data);
             setLoading(false);
         });
     }, []);
@@ -24,8 +24,8 @@ function Main() {
         <>
         <h1>Выберите категорию:</h1>
         <div className="button">
-            {categories.map((name) => (
-                <a key={name.category} className="s" href={`/category/${name.category}`}>{name.category}</a>
+            {categories.map((category) => (
+                <a key={category.id} className="s" href={`/category/${category.id}`}>{category.name}</a>
             ))}
         </div>
         </>
